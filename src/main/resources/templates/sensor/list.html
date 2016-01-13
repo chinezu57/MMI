@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/default">
+
+<head>
+</head>
+<body>
+<div class="container">
+    <th:block layout:fragment="content">
+        <li><a href="#" th:href="@{/sensor/save}">Add Sensor</a></li>
+        <div class="panel panel-default">
+            <div class="panel-heading">Sensors</div>
+            <table class="table table-condensed table-striped table-hover">
+                <thead>
+                <tr>
+                    <th class="col-xs-2">Name</th>
+                    <th class="col-xs-1">Input Pin Id</th>
+                    <th class="col-xs-1">Galileo Id</th>
+                    <th class="col-xs-1">Location</th>
+                    <th class="col-xs-1">Pooling Time</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="sensor : ${sensors}">
+                    <td th:text="${sensor.name}">name</td>
+                    <td th:text="${sensor.inputPinId}">Input pin id</td>
+                    <td th:text="${sensor.location}">Location</td>
+                    <td th:text="${sensor.galileoId}">Galileo Id</td>
+                    <td th:text="${sensor.poolingTime}">Pooling Time</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </th:block>
+</div>
+</body>
+</html>

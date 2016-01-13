@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/default">
+
+<head>
+</head>
+<body>
+<div class="container">
+    <th:block layout:fragment="content">
+        <form class="form" role="form" th:action="@{/timer/save}"
+              th:object="${timer}" method="post" accept-charset="ISO-8859-1">
+            <label>Galileo Id</label>
+            <select class="form-control" th:field="*{galileoId}">
+                <option th:each="galileo : ${galileos}" th:value="${galileo.id}"
+                        th:text="${galileo.name} +' :'+ ${galileo.ipAddress}"></option>
+            </select>
+
+            <label>Output</label>
+            <select class="form-control" th:field="*{outputId}">
+                <option th:each="output : ${outputs}" th:value="${output.id}"
+                        th:text="${output.pin} + ${output.pinType}"></option>
+            </select>
+
+            <label for="ipAddress">Timer</label>
+            <input id="ipAddress" type="number" class="form-control" name="ipAddress" autocomplete="off" th:field="*{timer}" />
+
+            <label for="loop">Timer</label>
+            <input id="loop" type="checkbox" class="form-control" name="loop" th:field="*{loop}" />
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
+        </form>
+    </th:block>
+</div>
+</body>
+</html>

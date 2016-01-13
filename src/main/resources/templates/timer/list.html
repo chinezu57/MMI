@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/default">
+
+<head>
+</head>
+<body>
+<div class="container">
+    <th:block layout:fragment="content">
+        <li><a href="#" th:href="@{/timer/save}">Add Timer</a></li>
+        <div class="panel panel-default">
+            <div class="panel-heading">Timers</div>
+            <table class="table table-condensed table-striped table-hover">
+                <thead>
+                <tr>
+                    <th class="col-xs-2">Galileo Id</th>
+                    <th class="col-xs-1">Output Id</th>
+                    <th class="col-xs-1">Timer</th>
+                    <th class="col-xs-1">Loop</th>
+                    <th class="col-xs-1">Active</th>
+                    <th class="col-xs-1"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="timer : ${timers}">
+                    <td th:text="${timer.galileoId}">name</td>
+                    <td th:text="${timer.outputId}">Ip Address</td>
+                    <td th:text="${timer.timer}">Location</td>
+                    <td th:text="${timer.loop}">Loop</td>
+                    <td th:text="${timer.active}">Active</td>
+                    <td><li><a href="#" th:href="'/timer/toggle/'+${timer.id}">Toggle Active</a></li></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </th:block>
+</div>
+</body>
+</html>

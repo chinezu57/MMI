@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/default">
+
+<head>
+</head>
+<body>
+<div class="container">
+    <th:block layout:fragment="content">
+        <form class="form" role="form" th:action="@{/sensor/save}"
+              th:object="${sensor}" method="post" accept-charset="ISO-8859-1">
+            <label>Galileo Id</label>
+            <select class="form-control" th:field="*{galileoId}">
+                <option th:each="galileo : ${galileos}" th:value="${galileo.id}"
+                        th:text="${galileo.name} +' :'+ ${galileo.ipAddress}"></option>
+            </select>
+
+            <label>Output</label>
+            <select class="form-control" th:field="*{inputPinId}">
+                <option th:each="output : ${outputs}" th:value="${output.id}"
+                        th:text="${output.pin} + ${output.pinType}"></option>
+            </select>
+
+            <label for="name">Name</label>
+            <input id="name" type="text" class="form-control" name="name" autocomplete="off" th:field="*{name}" />
+
+            <label for="location">Location</label>
+            <input id="location" type="text" class="form-control" name="location" th:field="*{location}" />
+
+            <label for="poolingTime">Pooling Time</label>
+            <input id="poolingTime" type="number" class="form-control" name="poolingTime" th:field="*{poolingTime}" />
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
+        </form>
+    </th:block>
+</div>
+</body>
+</html>

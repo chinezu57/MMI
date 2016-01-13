@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/default">
+
+<head>
+</head>
+<body>
+<div class="container">
+    <th:block layout:fragment="content">
+        <li><a href="#" th:href="@{/galileo}">Add Galileo</a></li>
+        <div class="panel panel-default">
+            <div class="panel-heading">Galileos</div>
+            <table class="table table-condensed table-striped table-hover">
+                <thead>
+                <tr>
+                    <th class="col-xs-2">Name</th>
+                    <th class="col-xs-1">Ip Address</th>
+                    <th class="col-xs-1">Location</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="galileo : ${galileos}">
+                    <td th:text="${galileo.name}">name</td>
+                    <td th:text="${galileo.ipAddress}">Ip Address</td>
+                    <td th:text="${galileo.location}">Location</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </th:block>
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/default">
+
+<head>
+</head>
+<body>
+<div class="container">
+    <th:block layout:fragment="content">
+        <form class="form" role="form" th:action="@{/galileo/save}"
+              th:object="${galileo}" method="post" accept-charset="ISO-8859-1">
+            <label for="name">Name</label>
+            <input id="name" type="text" class="form-control" name="name" autofocus="autofocus" th:field="*{name}" />
+
+            <label for="ipAddress">Ip Address</label>
+            <input id="ipAddress" type="text" class="form-control" name="ipAddress" autocomplete="off" th:field="*{ipAddress}" />
+
+            <label for="location">Location</label>
+            <input id="location" type="text" class="form-control" name="location" th:field="*{location}" />
+
+            <label for="termsAndConditions">Terms and Conditions</label>
+            <input id="termsAndConditions" type="checkbox" class="form-control" name="firstname" />
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
+        </form>
+    </th:block>
+</div>
+</body>
+</html>
